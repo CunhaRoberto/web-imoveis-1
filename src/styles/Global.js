@@ -18,7 +18,8 @@ import { createGlobalStyle } from "styled-components";
        background-color: var(--primary);
        color: var(--secondary);
        font-size: 1.2rem;
-        font-weight: 400;
+       font-weight: 400;
+       font-family: 'Dosis', sans-serif;
    } 
    ul{list-style-type:nome;}
    a{text-decoration: none;}
