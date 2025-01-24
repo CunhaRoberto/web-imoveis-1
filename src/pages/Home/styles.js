@@ -11,5 +11,5 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 flex-wrap: wrap;
-padding: 25px 150px
+padding: 25px 150px;
 `

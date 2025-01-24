@@ -5,8 +5,6 @@ const Banner = ( ) => {
     return (
         <Conteiner>
           <Text>
-            {/* <h2>Descubra o seu próximo destino de lazer!</h2>
-            <p>Casas perfeitas para momentos inesquecíveis!!</p> */}
             <h2>Quer que seus imóveis sejam vistos por todos ?</h2>
             <p>Aqui você pode divulgar seus anúncios de imóveis</p>
             <span>Cadastre seu imóvel</span>
