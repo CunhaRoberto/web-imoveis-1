@@ -13,7 +13,8 @@ export const Item = styled.div`
     h3{
         margin-bottom: 10px;
     }
-    ul{
+    ul{    
+    list-style: none;
      li{
         padding: 12px 0;
       }

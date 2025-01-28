@@ -20,6 +20,7 @@ export const Logo = styled.div`
 export const Menu = styled.div`
  ul{
    display: flex;
+   list-style: none;
   justify-content: space-between;
   align-items: center;
   li{

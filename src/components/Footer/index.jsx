@@ -11,9 +11,21 @@ const Footer = ( ) => {
                 <img src={LogoImg} alt="ImobExpress Logo" />
                 <p>Usando a ImobExpress você pode mostrar seus imóveis para mais pessoas, ou encontrar o seu imóvel dos sonhos, a ImobExpress é líder da indústria da região </p>
                 <ul>
-                    <p><span><FaFacebook size={32} /></span></p>
-                    <p><span><FaInstagram size={32} /></span></p>
-                    <p><span><FaWhatsapp size={32} /></span></p>
+                    <li >
+                        <span>
+                        <FaFacebook size={32} />
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                        <FaInstagram size={32} />
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                        <FaWhatsapp size={32} />
+                        </span>
+                    </li>
                 </ul>
             </Item>
             <Item>
@@ -22,20 +34,25 @@ const Footer = ( ) => {
                     <p><span>Comprar</span></p>
                     <p><span>Alugar</span></p>
                     <p><span>Vender</span></p>
-                </ul>
-                <h3>Our Services</h3>
-                <ul>
-                    <p><span>Comprar</span></p>
-                    <p><span>Alugar</span></p>
-                    <p><span>Vender</span></p>
-                </ul>
-                <h3>Our Services</h3>
-                <ul>
-                    <p><span>Comprar</span></p>
-                    <p><span>Alugar</span></p>
-                    <p><span>Vender</span></p>
-                </ul>
+                </ul>                
             </Item>
+            <Item>
+                <h3>Our Services</h3>
+                <ul>
+                    <p><span>Comprar</span></p>
+                    <p><span>Alugar</span></p>
+                    <p><span>Vender</span></p>
+                </ul>                
+            </Item>
+            <Item>
+                <h3>Our Services</h3>
+                <ul>
+                    <p><span>Comprar</span></p>
+                    <p><span>Alugar</span></p>
+                    <p><span>Vender</span></p>
+                </ul>                
+            </Item>
+            
         </Container>
         <Copy>
             <p>© Copyright 2025</p>
