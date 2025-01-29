@@ -14,7 +14,7 @@ const Card = () => {
                 <span><FaMapMarkerAlt /> Residencial Santa Cruz</span>
                 <span>R$ 950,00 / Fim de semana</span>
                 </Itens> 
-              <a href="#">Detalhes<FaArrowRight /></a>
+              <a href="imoveis">Detalhes<FaArrowRight /></a>
             </Description>
         </Container>
         
