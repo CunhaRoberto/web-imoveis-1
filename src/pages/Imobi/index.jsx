@@ -5,8 +5,7 @@ import TopBanner from "../../components/TopBanner";
 const Imobi = ( ) => {
     return (
         <Container>
-            <TopBanner />
-            <h2>Imobi</h2>
+            <TopBanner />            
         </Container>
     )
 }
