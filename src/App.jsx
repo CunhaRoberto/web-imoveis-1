@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Imobi />
       {/* <Banner /> */}
-      <Home />
+      {/* <Home /> */}
       <Footer />
       <Global />
     </div>
