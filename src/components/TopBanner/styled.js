@@ -24,13 +24,13 @@ export const Text = styled.div`
     width: 55%;
     position: relative;
     z-index: 1;
-    h2{
+    h2 {
         color: var(--white);
         font-size: 3.875rem;
-        margim-bottom: 25px;
+        margin-bottom: 25px;
     }
-    P{
+    p {
         color: var(--white);
-        margim-bottom: 25px;
+        margin-bottom: 25px;
     }
-`
+`;
