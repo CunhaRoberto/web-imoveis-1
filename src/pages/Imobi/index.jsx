@@ -12,6 +12,7 @@ const Imobi = ( ) => {
                     <img src="https://www.toziimoveis.com.br/assets/blog/9-1e397c7a9726cbf88244bccb62cc5247.jpg" alt="" />
                 </Thumb>
             <Description>
+              <h2>Alugar</h2>
             <p>   Imóvel  pertence  a  Roberto  Aparecido  da  Cunha,  Rua  Roney  Gomes  barbosa,  número  1114</p>
             </Description>
             </Left>
@@ -33,11 +34,11 @@ const Imobi = ( ) => {
                 <ProfileFormContact>
                   <h3>Contate o anunciante</h3>
                   <form>
-                    <input type="text" name="" id=""></input>
+                    <input type="text" placeholder="Nome:"></input>
                     <p></p>
-                    <input type="text" name="" id=""></input>
+                    <input type="text" name="" placeholder="Email:"></input>
                     
-                    <textarea name="" id="" cols="30" rows="10" />
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Mensagem:" />
                     <button>Enviar mensagem</button>
                   </form>
                 </ProfileFormContact>

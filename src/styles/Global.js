@@ -12,6 +12,8 @@ import { createGlobalStyle } from "styled-components";
         --gray:rgb(138, 137, 137);
         --blue: #4766FF;
         --white: #FFF;
+        --gray-light:#e5e1dc
+        --shade: #efefef;
     } 
 
     body{

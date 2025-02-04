@@ -58,5 +58,42 @@ export const ProfileContact = styled.div`
     }
 `
 export const ProfileFormContact = styled.div`
-
+ h3{
+     margin-bottom: 15px;
+     color: var(--secondary);  
+}   
+     form{
+        input, textarea{
+            height: 50px;       
+            padding: 8px 15px;
+            border-radius: 3px;
+            width: 100%;
+            color: var(--secondary);
+            letter-spacing: 0.1px;
+            font-size: 0.938rem;
+            margin-bottom: 10px;
+            outline: none;
+            border-color: var(--gray-light);
+            border: 1px solid var(--shade);
+            resize: none;
+        }
+            textarea{
+                width: 100%;
+                height: 100px;
+            }
+                button{
+                    width: 100%;
+                    cursor: pointer;
+                    display: inline-block;
+                    text-align: center;
+                    background-color: var(--blue);
+                    line-height: 24px;
+                    border: 0;
+                    color: var(--white);
+                    font: 0.875rem;
+                    font-height: 600;
+                    transition: 0.3s;
+                    padding: 12px 20px;
+                }
+     }
 `
