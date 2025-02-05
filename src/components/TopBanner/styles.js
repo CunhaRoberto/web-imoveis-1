@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-padding: 100px 150px;
+padding: 50px 150px;
 position: relative;
 background-size: cover;
 background-position: center;
 background-image: url(https://www.toziimoveis.com.br/assets/blog/9-1e397c7a9726cbf88244bccb62cc5247.jpg);
-background-color: rgba(0, 0, 0, 0.6);
+
 :before{
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,.6);
     contemt: '';
     position: absolute;
     top: 0;
