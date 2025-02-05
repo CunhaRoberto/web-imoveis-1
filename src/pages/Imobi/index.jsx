@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Container, Description, Left, Profile, ProfileContact, ProfileDescription, ProfileFormContact, ProfileImg, Right, Thumb } from "./styled";
+import { Container, Description, Left, Profile, ProfileContact, ProfileDescription, ProfileFormContact, ProfileImg, Right, Thumb } from "./styles";
 import TopBanner from "../../components/TopBanner";
 
 const Imobi = ( ) => {

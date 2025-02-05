@@ -63,6 +63,8 @@ export const ProfileFormContact = styled.div`
      color: var(--secondary);  
 }   
      form{
+     display: flex;
+     flex-direction: column; 
         input, textarea{
             height: 50px;       
             padding: 8px 15px;

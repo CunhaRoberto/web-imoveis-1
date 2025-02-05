@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Text } from "./styled";
+import { Container, Text } from "./styles";
 
 const TopBanner = ( ) => {
     return (
