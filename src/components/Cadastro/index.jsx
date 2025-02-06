@@ -3,22 +3,22 @@ import { Container, ContainerForm, Label, Form } from "./styled";
 import Input from "../../components/Input"
 import Button from "../../components/Button"
 
-const Login = () => {
+const Cadastro = () => {
     return (
         <Container>
             <ContainerForm>
                 <Form>
-                <h2>Acesse sua conta</h2>
-                <p>Entre com seu e-mail e senha!</p>
+                <h2>Crie sua conta</h2>
+                <p> com seu e-mail e senha!</p>
                     <Label>E-mail</Label>
                     <Input type="text" placeholder="Informe seu E-mail" />
                     <Label>Senha</Label>
                     <Input type="text" placeholder="Informe sua senha" />
-                    <Button>Fazer Login</Button>
+                    <Button>Fazer o cadastro</Button>
                 </Form>
             </ContainerForm>
         </Container>
     );
 };
 
-export default Login;
+export default Cadastro;
