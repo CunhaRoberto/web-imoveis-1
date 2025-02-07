@@ -9,7 +9,9 @@ const Cadastro = () => {
             <ContainerForm>
                 <Form>
                 <h2>Crie sua conta</h2>
-                <p> com seu e-mail e senha!</p>
+                <p>Cadastre-se para acessar a plataforma</p>
+                    <Label>Nome</Label>
+                    <Input type="text" placeholder="Informe seu Nome" />
                     <Label>E-mail</Label>
                     <Input type="text" placeholder="Informe seu E-mail" />
                     <Label>Senha</Label>

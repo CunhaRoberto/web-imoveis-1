@@ -7,7 +7,7 @@ import { createGlobalStyle } from "styled-components";
     box-sizing: border-box;
    }
       :root{
-        --primary: #F7F9FC;
+        --primary: #f1f2f3;
         --secondary: #15181C;
         --gray:rgb(138, 137, 137);
         --blue: #4766FF;

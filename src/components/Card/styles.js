@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: 24%;
   margin-bottom: 12px;
   background-color: var(--white);
-  cursor: pointer;
   box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.1);
 `
 export const Img = styled.div`
@@ -12,7 +11,6 @@ export const Img = styled.div`
     img{
     width: 100%;
     height: auto;
-    cursor: pointer;
     }
 `
 export const Description = styled.div`
@@ -27,11 +25,9 @@ export const Description = styled.div`
     font-size:1.5rem;
     font-weight: 600;
     margin-bottom: 10px;
-    cursor: pointer;
     }
 `
 export const Itens = styled.div`
-    cursor: pointer;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
