@@ -24,33 +24,47 @@ const [data, setData] = useState({
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('testessssssss')
-        Api.post('https://user-api-p9ru.onrender.com/user/', data)
-        .then((response) => {
-            console.log(response.status)
-            if (response.status === 201) {
-                toast.success("Cadastrado com sucesso!");
-                
-                setTimeout(() => {
-                    navigate("/login"); 
-                }, 1000);
-            }
+        console.log(data.cpf.length)
+        if(!data.name) toast.error("Informe o nome"); 
+        if(!data.cpf) toast.error("Informe o CPF");
+        if(data.cpf.length < 11 || data.cpf.length > 11){
+            toast.error("Informe o CPF um válido (com 11 caracteres)");
+            data.cpf = ''
+        } 
+        if(data.cellPhone.length < 11 || data.cellPhone.length > 11){
+            toast.error("Informe o telefone um válido (com 11 caracteres)");
+            data.cellPhone = ''
+        } 
             
-        })
-        .catch((response) => {
-            if (response.status === 409) {
-                toast.error(`CPF ou E-mail já cadastrado!`);                               
-            } 
-            
-            if (response.status === 400) {
-                toast.error(`Dados inválidos ou não preenchidos!`);                               
-            }
-            
-            else{
-                toast.error('Erro ao realizar o cadastro, tente novamente mais tarde!');
-            }
-            
-        })
+        if(!data.email) toast.error("Informe o E-mail");
+        if(!data.cellPhone) toast.error("Informe o telefone");
+        if(!data.password) toast.error("Informe a senha");
+        if(data.name && data.cpf && data.email && data.cellPhone && data.password){       
+            Api.post('https://user-api-p9ru.onrender.com/user/', data)
+            .then((response) => {
+                console.log(response.status)
+                if (response.status === 201) {
+                    toast.success("Cadastrado com sucesso!");
+                    
+                    setTimeout(() => {
+                        navigate("/login"); 
+                    }, 1000);
+                }                
+            })
+            .catch((response) => {
+                if (response.status === 409) {
+                    toast.error(`CPF ou E-mail já cadastrado!`);                               
+                }                 
+                if (response.status === 400) {
+                    toast.error(`Dados inválidos!`);                               
+                }                
+                else{
+                    toast.error('Erro ao realizar o cadastro, tente novamente mais tarde!');
+                }                
+            })           
+        }
+
+        
     }
 
 
@@ -69,21 +83,21 @@ const [data, setData] = useState({
                     />
                     <Label>CPF</Label>
                     <Input
-                     type="text"
+                     type="number"
                      name="cpf"
                      placeholder="Informe seu CPF" 
                      onChange={InputValue}
                     />
                     <Label>E-mail</Label>
                     <Input
-                     type="text"
+                     type="email"
                      name="email"
                      placeholder="Informe seu E-mail" 
                      onChange={InputValue}
                     />
                     <Label>Telefone</Label>
                     <Input
-                     type="text"
+                     type="number"
                      name="cellPhone"
                      placeholder="Informe seu telefone" 
                      onChange={InputValue}
@@ -92,7 +106,7 @@ const [data, setData] = useState({
                     <Input 
                     type="text"
                     name="password" 
-                    placeholder="Informe sua senha" 
+                    placeholder="Informe uma senha com 6 caracteres" 
                     onChange={InputValue}
                     />
                     <Button>Fazer o cadastro</Button>

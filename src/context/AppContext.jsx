@@ -16,10 +16,10 @@ export const AppContextProvider = ({children}) => {
         }
     console.log('usuário logado', user)
     }, [])
-
+    
     async function authenticate(email, password) {
-        console.log('teste')
-        Api.post('https://user-api-p9ru.onrender.com/auth/login', {email, password})
+        console.log('chegou')
+        Api.post('https://user-api-p9ru.onrender.com/auth/login/', {email, password})
         .then((response) => {
             if(!response.data.error === true){
                 toast(response.data.message)

@@ -9,9 +9,17 @@ const Login = () => {
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Tentando autenticar com:", email, password); // Depuração
+        console.log({ 
+            email, 
+            password });
+            try {
+                await auth.authenticate(email, password);
+            } catch (error) {
+                console.error("Erro ao autenticar:", error);
+            }
+            
      auth.authenticate(email, password);
     };
 
@@ -23,7 +31,7 @@ const Login = () => {
                     <p>Entre com seu e-mail e senha!</p>
                     <Label>E-mail</Label>
                     <Input
-                        type="text"
+                        type="email"
                         name="email"
                         placeholder="Informe seu E-mail"
                         value={email} // Controlled input
@@ -37,7 +45,10 @@ const Login = () => {
                         value={password} // Controlled input
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button>Fazer Login</Button>
+                    <Button type="submit">Fazer Login</Button>
+                    <p></p>
+                    <Button>Cadastrar-se</Button>
+                    
                 </Form>
             </ContainerForm>
         </Container>
