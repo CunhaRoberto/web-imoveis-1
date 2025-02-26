@@ -22,17 +22,23 @@ const [data, setData] = useState({
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('teste')
+        console.log('testessssssss')
         Api.post('https://user-api-p9ru.onrender.com/user/', data)
         .then((response) => {
-            if(!response.data.error ===true){
-                toast(response.data.message);
-            } else{
-                toast(response.data.message);
+            console.log(response.status)
+            if (response.status === 201) {
+                toast.success("Cadastrado com sucesso!");
+                console.log("Usuário cadastrado:", response.data);
             }
+            
         })
-        .catch(() => {
-            console.log('Erro: Erro no sistema')
+        .catch((response) => {
+            if (response.status === 409) {
+                toast.error(`CPF ou E-mail já cadastrado!`);                               
+            } else{
+                toast.error('Erro ao realizar o cadastro, tente novamente mais tarde!');
+            }
+            
         })
     }
 
