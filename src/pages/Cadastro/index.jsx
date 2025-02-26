@@ -5,6 +5,7 @@ import Button from "../../components/Button"
 import { useState } from "react";
 import Api from "../../services/Api"
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Cadastro = () => {
 const [data, setData] = useState({
@@ -20,6 +21,7 @@ const [data, setData] = useState({
          e.target.value
         });
 
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('testessssssss')
@@ -28,14 +30,23 @@ const [data, setData] = useState({
             console.log(response.status)
             if (response.status === 201) {
                 toast.success("Cadastrado com sucesso!");
-                console.log("Usuário cadastrado:", response.data);
+                
+                setTimeout(() => {
+                    navigate("/login"); 
+                }, 1000);
             }
             
         })
         .catch((response) => {
             if (response.status === 409) {
                 toast.error(`CPF ou E-mail já cadastrado!`);                               
-            } else{
+            } 
+            
+            if (response.status === 400) {
+                toast.error(`Dados inválidos ou não preenchidos!`);                               
+            }
+            
+            else{
                 toast.error('Erro ao realizar o cadastro, tente novamente mais tarde!');
             }
             
@@ -74,7 +85,7 @@ const [data, setData] = useState({
                     <Input
                      type="text"
                      name="cellPhone"
-                     placeholder="Informe seu E-mail" 
+                     placeholder="Informe seu telefone" 
                      onChange={InputValue}
                     />
                     <Label>Senha</Label>
