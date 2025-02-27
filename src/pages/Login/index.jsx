@@ -3,24 +3,41 @@ import { Container, ContainerForm, Label, Form } from "./styled";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { AppAuth } from "../../context/AppAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const auth = AppAuth();
     const [email, setEmail] = useState(""); 
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    const handleSubmit = async (e) => {
+
+
+    const handleSubmit =  async (e) => {
         e.preventDefault();
-        console.log({ 
-            email, 
-            password });
-            try {
-                await auth.authenticate(email, password);
-            } catch (error) {
-                console.error("Erro ao autenticar:", error);
-            }
+        setLoading(true);
+        setError(""); // Limpar erros anteriores
+        
+        try {
+            if(!email){
+                toast.error("Informe o e-mail!");
+                email = ''
+            } 
+
+            if(!password){
+                toast.error("Informe senha!");
+                password = ''
+            } 
+                   
+            if(email && password)auth.authenticate(email, password);
             
-     auth.authenticate(email, password);
+        } catch (error) {
+            setError("Erro ao autenticar. Verifique suas credenciais.");
+            console.error("Erro ao autenticar:", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -29,26 +46,34 @@ const Login = () => {
                 <Form onSubmit={handleSubmit}>
                     <h2>Acesse sua conta</h2>
                     <p>Entre com seu e-mail e senha!</p>
+                    
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+
                     <Label>E-mail</Label>
                     <Input
                         type="email"
                         name="email"
                         placeholder="Informe seu E-mail"
-                        value={email} // Controlled input
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+
                     <Label>Senha</Label>
                     <Input
                         type="password"
                         name="password"
                         placeholder="Informe sua senha"
-                        value={password} // Controlled input
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button type="submit">Fazer Login</Button>
-                    <p></p>
-                    <Button>Cadastrar-se</Button>
+
+                    <Button type="submit" disabled={loading}>
+                        {loading ? "Carregando..." : "Fazer Login"}
+                    </Button>
                     
+                    <p></p>
+                    
+                    <Button>Cadastrar-se</Button>
                 </Form>
             </ContainerForm>
         </Container>
