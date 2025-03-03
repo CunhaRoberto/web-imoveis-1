@@ -57,7 +57,7 @@ const [data, setData] = useState({
             .then((response) => {
                 console.log('bão')
 
-                if (response.status === 201) {
+                if (response.status === 200) {
                     toast.success("Nova senha cadastrada com sucesso!");
                     
                     setTimeout(() => {
