@@ -11,11 +11,11 @@ import { Link } from "react-router-dom";
 
 const NewPassword = () => {
 const [data, setData] = useState({
-    // name: '',
-    // email:'',
+   
     newPassword:'',
-    // cellPhone: '',
-    // cpf: ''
+    confirmNewPassword: '',
+    code: '',
+    
     });
     
     const InputValue = (e) => setData({
@@ -26,41 +26,37 @@ const [data, setData] = useState({
         const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(data.cpf.length)
-        // if(!data.name) toast.error("Informe o nome"); 
-        // if(!data.cpf) toast.error("Informe o CPF");
-        // if(data.cpf.length < 11 || data.cpf.length > 11){
-        //     toast.error("Informe o CPF um válido (com 11 caracteres)");
-        //     data.cpf = ''
-        // } 
-        // if(data.cellPhone.length < 11 || data.cellPhone.length > 11){
-        //     toast.error("Informe o telefone um válido (com 11 caracteres)");
-        //     data.cellPhone = ''
-        // } 
         
-        // if(!data.email) toast.error("Informe o E-mail");
-        // if(!data.cellPhone) toast.error("Informe o telefone");
+        if(!data.code) toast.error("Insira o código enviado no seu email");
         if(!data.newPassword) toast.error("Informe a nova senha");
-        if(data.newPassword.length < 6 || data.NewPassword.length > 6){
-            toast.error("Informe uma senha válida (com 6 números)")
-            data.password = ''
+        
+        if(data.newPassword){
+            if(data.newPassword.length < 6 || data.newPassword.length > 6){
+                toast.error("Informe uma senha válida (com 6 números)")                
+            }else{
+                if(!data.confirmNewPassword) toast.error("Repita a senha");
+            }
         }
-        if(data.confirmNewPassword.length < 6 || data.confirmNewPassword.length > 6){
-            toast.error("Informe uma senha válida (com 6 números)")
-            data.password = ''
+        // if(data.confirmNewPassword.length < 6 || data.confirmNewPassword.length > 6){
+        //     toast.error("Informe uma senha válida (com 6 números)")
+        //     data.password = ''
+
+        if(data.confirmNewPassword && data.newPassword.length === 6){
+            if(data.newPassword !== data.confirmNewPassword){
+                toast.error("As 2 senhas devem ser iguais")
+                // data.newPassword = ''
+                // data.confirmNewPassword = ''
+            }
         }
 
-        if(data.newPassword !== data.confirmNewPassword){
-            toast.error("As 2 senhas devem ser iguais")
-            data.newPassword = ''
-            data.confirmNewPassword = ''
-        }
 
-
-        if(data.code && data.NewPassword && data.confirmNewPassword){       
-            Api.post('https://user-api-p9ru.onrender.com/user/', data)
+        if(data.code 
+            && (data.newPassword && data.newPassword.length == 6)  
+            && (data.confirmNewPassword === data.newPassword)){       
+            Api.post('https://user-api-p9ru.onrender.com/auth/new_password', data)
             .then((response) => {
-                console.log(response.status)
+                console.log('bão')
+
                 if (response.status === 201) {
                     toast.success("Nova senha cadastrada com sucesso!");
                     
@@ -130,14 +126,14 @@ const [data, setData] = useState({
 
                     <Label>Nova senha</Label>
                     <Input 
-                    type="text"
+                    type="number"
                     name= "newPassword" 
                     placeholder="Informe uma senha com 6 caracteres" 
                     onChange={InputValue}
                     />
                     <Label>Repita a senha</Label>
                     <Input 
-                    type="text"
+                    type="number"
                     name= "confirmNewPassword" 
                     placeholder="Repita a senha " 
                     onChange={InputValue}
