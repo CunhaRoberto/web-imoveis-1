@@ -7,6 +7,8 @@ import Api from "../../services/Api"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
 const Cadastro = () => {
 const [data, setData] = useState({
     name: '',
@@ -21,7 +23,7 @@ const [data, setData] = useState({
          e.target.value
         });
 
-    const navigate = useNavigate();
+        const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data.cpf.length)
@@ -47,7 +49,7 @@ const [data, setData] = useState({
                     toast.success("Cadastrado com sucesso!");
                     
                     setTimeout(() => {
-                        navigate("/login"); 
+                        navigate.push("/login");
                     }, 1000);
                 }                
             })
@@ -109,7 +111,9 @@ const [data, setData] = useState({
                     placeholder="Informe uma senha com 6 caracteres" 
                     onChange={InputValue}
                     />
-                    <Button>Fazer o cadastro</Button>
+                    <Button >
+                     <Link to="/cadastro">Fazer o cadastro</Link>
+                     </Button>
                 </Form>
             </ContainerForm>
         </Container>

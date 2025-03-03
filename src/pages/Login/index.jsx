@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { AppAuth } from "../../context/AppAuth";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const auth = AppAuth();
@@ -73,7 +74,9 @@ const Login = () => {
                     
                     <p></p>
                     
-                    <Button>Cadastrar-se</Button>
+                    <Button>
+                     <Link to="/cadastro">Fazer o cadastro</Link>
+                     </Button>
                 </Form>
             </ContainerForm>
         </Container>

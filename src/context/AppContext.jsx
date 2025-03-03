@@ -20,17 +20,18 @@ export const AppContextProvider = ({children}) => {
     
     
     async function authenticate(email, password) {
-        console.log('chegando em authenticate')
         Api.post('https://user-api-p9ru.onrender.com/auth/login/', {email, password})
         .then((response) => {
             if(!response.data.error === true){
                 toast.success(response)                
             }
-            const email = response.data.email;
-            const payload = { token: response.data.token,  email}
+            
+            //const email = email;
+            const payload = { token: response.data.result.token,  email}
+            console.log(payload)
             setUser(payload);
             setLocalStorage(payload);
-            //window.location.href="/perfil"
+            window.location.href="/perfil"
             toast.success("Login realizado com sucesso!")
         }).catch((response) => {
             if(response.status == 400){
