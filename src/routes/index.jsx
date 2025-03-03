@@ -10,6 +10,7 @@ import Login from "../pages/Login";
 import Perfil from "../pages/Perfil";
 import PrivateRoute from "../components/PrivateRoute";
 import ForgotPassword from "../pages/ForgotPassword";
+import NewPassword from "../pages/NewPassword";
 
 const RouterApp = () => {
     return (
@@ -23,6 +24,7 @@ const RouterApp = () => {
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/forgotpassword" element={<ForgotPassword />} />
+                <Route path="/newpassword" element={<NewPassword />} />
 
                 {/* Rota privada corrigida */}
                 <Route

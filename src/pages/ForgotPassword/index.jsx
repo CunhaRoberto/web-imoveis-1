@@ -34,7 +34,7 @@ const [data, setData] = useState({
                     toast.success("Código enviado para seu email!");
                     
                     setTimeout(() => {
-                        navigate("/login");
+                        navigate("/newpassword");
                     }, 1000);
                 }                
             })
