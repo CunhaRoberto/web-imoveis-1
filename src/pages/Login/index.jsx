@@ -77,6 +77,8 @@ const Login = () => {
                     <Button>
                      <Link to="/cadastro">Fazer o cadastro</Link>
                      </Button>
+
+                     <Link to="/forgetpassword">Esqueci minha senha</Link>
                 </Form>
             </ContainerForm>
         </Container>
