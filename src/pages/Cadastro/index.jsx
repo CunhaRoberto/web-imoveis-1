@@ -49,7 +49,7 @@ const [data, setData] = useState({
                     toast.success("Cadastrado com sucesso!");
                     
                     setTimeout(() => {
-                        navigate.push("/login");
+                        navigate("/login");
                     }, 1000);
                 }                
             })

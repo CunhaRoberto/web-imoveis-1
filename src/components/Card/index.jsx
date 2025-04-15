@@ -3,7 +3,7 @@ import { Container, Description, Img, Itens } from "./styles";
 import { FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Card = () => {
+const Card = ({thumb, tipo, endereco, valor, slug}) => {
     return(
         <Container>
             <Img>
@@ -12,12 +12,12 @@ const Card = () => {
             </Link>
             </Img>
             <Description>
-            <h4>Casa 1</h4>
+            <h4>{tipo}</h4>
                <Itens>
-                <span><FaMapMarkerAlt /> Residencial Santa Cruz</span>
-                <span>R$ 950,00 / Fim de semana</span>
+                <span><FaMapMarkerAlt /> {endereco}</span>
+                <span>R$ {valor} / Fim de semana</span>
                 </Itens> 
-              <Link to='/imobi'><h4>Detalhes</h4><FaArrowRight /></Link>
+              <Link to={`/imobi/${slug}`} >Detalhes<FaArrowRight /></Link>
             </Description>
         </Container>
         
