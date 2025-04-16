@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Container, Copy, Item } from "./styles";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
-import LogoImg from"../../assets/8d8b2599-3c61-432f-9656-2dfe97ae04fe.jpg";
+import LogoImg from"../../assets/07349f40-1d1f-4e38-9c58-46c355e60fdd-removebg-preview (1).png";
 
 const Footer = ( ) => {
     return (

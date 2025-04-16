@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Logo, Menu } from "./styles";
-import LogoImg from"../../assets/8d8b2599-3c61-432f-9656-2dfe97ae04fe.jpg";
+import LogoImg from"../../assets/07349f40-1d1f-4e38-9c58-46c355e60fdd-removebg-preview (1).png";
 import { Link } from "react-router-dom";
 
 const Header = ( ) => {
@@ -8,7 +8,7 @@ const Header = ( ) => {
       <Container>
          <Logo>
             <Link to='/'>
-               <img src={LogoImg} alt="" style={{ width: '160px', height: '60px' }} />
+               <img src={LogoImg} alt="" style={{ width: '160px', height: '120px' }} />
             </Link>
          </Logo>
          <Menu>
