@@ -7,7 +7,7 @@ import Api from "../../services/Api";
 const Home = () => {
     const [imobi, setImobi] = useState([]);
     useEffect(() => {
-        Api.get('/litimobi')
+        Api.get('/listimobi')
         .then((response) => {
             setImobi(response.data)
         })

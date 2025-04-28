@@ -2,13 +2,14 @@ import React from "react";
 import { Container, Description, Img, Itens } from "./styles";
 import { FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { urlApi } from "../../services/Api";
 
 const Card = ({thumb, tipo, endereco, valor, slug}) => {
     return(
         <Container>
             <Img>
             <Link to='/imobi'>
-            <img src="https://www.toziimoveis.com.br/assets/blog/9-1e397c7a9726cbf88244bccb62cc5247.jpg" alt="" />
+            <img src={`${urlApi}/uplouds/${thumb}`} alt="" />
             </Link>
             </Img>
             <Description>
@@ -17,7 +18,7 @@ const Card = ({thumb, tipo, endereco, valor, slug}) => {
                 <span><FaMapMarkerAlt /> {endereco}</span>
                 <span>R$ {valor} / Fim de semana</span>
                 </Itens> 
-              <Link to={`/imobi/${slug}`} >Detalhes<FaArrowRight /></Link>
+              <Link to={`/imoveis/${slug}`} >Detalhes<FaArrowRight /></Link>
             </Description>
         </Container>
         
