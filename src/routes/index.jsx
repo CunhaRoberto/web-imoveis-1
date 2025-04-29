@@ -20,7 +20,7 @@ const RouterApp = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="*" element={<Error />} />
-                <Route path="/imoveis" element={<Imobi />} />
+                <Route path="/imoveis/:slug" element={<Imobi />} />
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/forgotpassword" element={<ForgotPassword />} />

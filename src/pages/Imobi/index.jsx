@@ -1,21 +1,52 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Container, Description, Left, Profile, ProfileContact, ProfileDescription, ProfileFormContact, ProfileImg, Right, Thumb } from "./styles";
 import TopBanner from "../../components/TopBanner";
 import Input from "../../components/Input"
 import TextArea from "../../components/TextArea"
+import Api, { urlApi } from "../../services/Api"
+import { useParams } from "react-router-dom";
 
-const Imobi = ( ) => {
+const Imobi = () => {
+  const { slug } = useParams();
+  const [dataimobi, setDataImobi] = useState([]);
+
+  useEffect(() => {
+    Api.get(`/listimobi/${slug}`)
+    .then((response) => {
+      setDataImobi(response.data)
+    })
+    .catch(() => {
+      console.log("Erro: Erro ao listar imóvel")
+    })
+  }, [])
+
+  const {
+    tipo,
+    endereco,
+    descricao,
+    thumb,
+    telefone,
+    name,
+    email,
+    userId
+    
+  } = dataimobi;
     return (
         <Fragment>                   
-         <TopBanner />  
+         <TopBanner
+         tipo={tipo} 
+         descricao={descricao}
+         thumb={thumb}
+         />  
          <Container>
             <Left>
                 <Thumb>
-                    <img src="https://www.toziimoveis.com.br/assets/blog/9-1e397c7a9726cbf88244bccb62cc5247.jpg" alt="" />
+                    <img src={`${urlApi}/uploads/${thumb}`} alt="" />
                 </Thumb>
             <Description>
-              <h2>Alugar</h2>
-            <p>   Imóvel  pertence  a  Roberto  Aparecido  da  Cunha,  Rua  Roney  Gomes  barbosa,  número  1114</p>
+              <h2>{tipo}</h2>
+              <h5>Endereço: {endereco}</h5>
+            <p>   {descricao}</p>
             </Description>
             </Left>
             <Right>
@@ -24,14 +55,14 @@ const Imobi = ( ) => {
                     <img src="https://i.pinimg.com/736x/a8/da/22/a8da222be70a71e7858bf752065d5cc3.jpg" alt="" />
                   </ProfileImg>
                   <ProfileDescription>
-                    <h3>Roberto Cunha</h3>
+                    <h3>{name}</h3>
                     <p>Descrição do usuário</p>
                   </ProfileDescription>
                 </Profile>
                 <ProfileContact>
                     <h3>Informações para contato:</h3>
-                    <p>(11) 94799-3421</p>
-                    <p>arthurcunha1114@gmail.com</p>
+                    <p>{telefone}</p>
+                    <p>{email}</p>
                 </ProfileContact>
                 <ProfileFormContact>
                   <h3>Contate o anunciante</h3>

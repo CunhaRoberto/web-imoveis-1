@@ -8,7 +8,7 @@ const Card = ({thumb, tipo, endereco, valor, slug}) => {
     return(
         <Container>
             <Img>
-            <Link to='/imobi'>
+            <Link to='/imoveis'>
             <img src={`${urlApi}/uplouds/${thumb}`} alt="" />
             </Link>
             </Img>
