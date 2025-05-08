@@ -1,10 +1,24 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Container, Description, Left, Profile, ProfileContact, ProfileDescription, ProfileFormContact, ProfileImg, Right, Thumb } from "./styles";
+import React, { Fragment,
+   useEffect,
+    useState } from "react";
+import { 
+  Container, 
+  Description, 
+  Left, 
+  Profile, 
+  ProfileContact, 
+  ProfileDescription, 
+  ProfileFormContact, 
+  ProfileImg,
+  Right, 
+  Thumb 
+} from "./styles";
 import TopBanner from "../../components/TopBanner";
 import Input from "../../components/Input"
 import TextArea from "../../components/TextArea"
 import Api, { urlApi } from "../../services/Api"
 import { useParams } from "react-router-dom";
+import Button from "../../components/Button"
 
 const Imobi = () => {
   const { slug } = useParams();
@@ -31,6 +45,32 @@ const Imobi = () => {
     userId
     
   } = dataimobi;
+
+    const [client_name, setClientName] = useState('');
+    const [client_email, setClientEmail] = useState('');
+    const [client_mensagem, setClientMensagem] = useState('');
+
+    const dataClient = {
+      client_name,
+      client_email,
+      client_mensagem,
+      userId
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      Api.post('/createmessage', dataMessage)
+      .then((response) => {
+        if (!response.data.erro === true) {
+          toast(response.data.message);
+        } else {
+          toast(response.data.message)
+        }
+      })
+      .catch(() => {
+        console.log('Erro: Erro no sistema')
+      })
+    }
     return (
         <Fragment>                   
          <TopBanner
@@ -66,11 +106,24 @@ const Imobi = () => {
                 </ProfileContact>
                 <ProfileFormContact>
                   <h3>Contate o anunciante</h3>
-                  <form>
-                    <Input type="text" placeholder="Nome:"/>
-                    <Input type="text" placeholder="E-mail:"/>
-                    <TextArea />
-                    <button>Enviar mensagem</button>
+                  <form onSubmit={handleSubmit} autoComplete="off">
+                      <Input
+                        type="hidden"
+                        name="userId"
+                        value={userId}
+                      />
+                      <Input 
+                        type="text" 
+                        placeholder="E-mail:"
+                        name="client_email"
+                        onChange={(e) => setClientEmail(e.target.value)}
+                      />
+                    <TextArea
+                     placeholder="Mensagem:"
+                     name="client_mensagem"
+                     onChange={(e) => setClientMensagem(e.target.value)}
+                    ></TextArea>
+                    <Button>Enviar mensagem</Button>
                   </form>
                 </ProfileFormContact>
             </Right>
