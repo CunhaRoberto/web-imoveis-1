@@ -4,18 +4,19 @@ import { FaArrowRight, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { urlApi } from "../../services/Api";
 
-const Card = ({thumb, tipo, endereco, valor, slug}) => {
+const Card = ({thumb, tipo, endereco, cidade, cep, valor, slug}) => {
     return(
         <Container>
             <Img>
             <Link to='/imoveis'>
-            <img src={`${urlApi}/uplouds/${thumb}`} alt="" />
+            <img src={thumb} className="thumb" alt="" />
             </Link>
             </Img>
             <Description>
             <h4>{tipo}</h4>
                <Itens>
-                <span><FaMapMarkerAlt /> {endereco}</span>
+                <span><FaMapMarkerAlt /> {endereco} - {cep} </span>
+                <span>{cidade}</span>
                 <span>R$ {valor} / Fim de semana</span>
                 </Itens> 
               <Link to={`/imoveis/${slug}`} >Detalhes<FaArrowRight /></Link>
