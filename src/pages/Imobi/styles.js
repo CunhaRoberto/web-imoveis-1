@@ -13,10 +13,10 @@ export const Left = styled.div`
 `
 
 export const Thumb = styled.div`
-    width: 100%;
+    width: 50%;
     img{
-        width: 100%;
-        height: auto;
+        width: 50%;
+        height: 50%;
         border-radius: 5px;
     }
 `

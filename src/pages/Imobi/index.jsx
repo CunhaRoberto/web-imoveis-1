@@ -19,32 +19,31 @@ import TextArea from "../../components/TextArea"
 import Api, { urlApi } from "../../services/Api"
 import { useParams } from "react-router-dom";
 import Button from "../../components/Button"
+import { toast } from "react-toastify";
 
 const Imobi = () => {
   const { slug } = useParams();
-  const [dataimobi, setDataImobi] = useState([]);
+  const [dataimobi, setImobi] = useState([]);
 
-  useEffect(() => {
-    Api.get(`/listimobi/${slug}`)
-    .then((response) => {
-      setDataImobi(response.data)
-    })
-    .catch(() => {
-      console.log("Erro: Erro ao listar imóvel")
-    })
-  }, [])
-
-  const {
-    tipo,
-    endereco,
-    descricao,
-    thumb,
-    telefone,
-    name,
-    email,
-    userId
-    
-  } = dataimobi;
+  
+    useEffect(() => {
+        Api.get(`https://user-api-p9ru.onrender.com/property/id?id=${slug}`)
+            .then((response) => {
+                  if (!response.data.error) {
+                    toast.success("Dados carregados com sucesso");
+                    setImobi(response.data); // ajuste aqui se necessário
+                } else {
+                    toast.error("Erro ao carregar dados.");
+                }
+            })
+            .catch((error) => {
+                if (error.response && error.response.status === 400) {
+                    toast.error('Erro ao autenticar. Verifique suas credenciais.');
+                } else {
+                    toast.error('Erro inesperado. Tente novamente mais tarde.');
+                }
+            });
+    }, []); // evita loop infinito
 
     const [client_name, setClientName] = useState('');
     const [client_email, setClientEmail] = useState('');
@@ -53,13 +52,12 @@ const Imobi = () => {
     const dataClient = {
       client_name,
       client_email,
-      client_mensagem,
-      userId
+      client_mensagem
     }
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      Api.post('/createmessage', dataMessage)
+      Api.post('/createmessage', 'dataMessage')
       .then((response) => {
         if (!response.data.erro === true) {
           toast(response.data.message);
@@ -74,19 +72,20 @@ const Imobi = () => {
     return (
         <Fragment>                   
          <TopBanner
-         tipo={tipo} 
-         descricao={descricao}
-         thumb={thumb}
+         tipo={dataimobi.tipo} 
+         descricao={dataimobi.descricao}
+         thumb={dataimobi.thumb}
          />  
          <Container>
             <Left>
                 <Thumb>
-                    <img src={`${urlApi}/uploads/${thumb}`} alt="" />
+                  <img src={dataimobi.thumb} alt="" />                    
                 </Thumb>
             <Description>
-              <h2>{tipo}</h2>
-              <h5>Endereço: {endereco}</h5>
-            <p>   {descricao}</p>
+              <h2>{"tipo"}</h2>
+              <h3>Endereço: {dataimobi.address} - { dataimobi.city}</h3>
+              <h3>Valor / Final de Semana: {dataimobi.price}</h3>
+            <p>   {}</p>
             </Description>
             </Left>
             <Right>
@@ -95,14 +94,14 @@ const Imobi = () => {
                     <img src="https://i.pinimg.com/736x/a8/da/22/a8da222be70a71e7858bf752065d5cc3.jpg" alt="" />
                   </ProfileImg>
                   <ProfileDescription>
-                    <h3>{name}</h3>
+                    <h3>{"name"}</h3>
                     <p>Descrição do usuário</p>
                   </ProfileDescription>
                 </Profile>
                 <ProfileContact>
                     <h3>Informações para contato:</h3>
-                    <p>{telefone}</p>
-                    <p>{email}</p>
+                    <p>{"telefone"}</p>
+                    <p>{"email"}</p>
                 </ProfileContact>
                 <ProfileFormContact>
                   <h3>Contate o anunciante</h3>
@@ -110,7 +109,7 @@ const Imobi = () => {
                       <Input
                         type="hidden"
                         name="userId"
-                        value={userId}
+                        value={"userId"}
                       />
                       <Input 
                         type="text" 

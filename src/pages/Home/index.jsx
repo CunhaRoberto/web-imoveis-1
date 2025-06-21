@@ -47,7 +47,7 @@ const Home = () => {
                         cep = {item.zipCode}
                         cidade = {item.city}
                         valor={item.price}
-                        slug={item.slug}
+                        slug={item.id}
                     />
                 ))}
             </Wrapper>
